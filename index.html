@@ -7,16 +7,13 @@ description:
     info, and other posts related to technology, programming, and software
     engineering.
 ---
+<div class="welcome-mat">
+  <h4 class="text-muted"><i class="fa fa-map-marker"></i> Latest Post</h4>
+</div>
 
-<h1><i class="fa fa-map-marker"></i> Latest Post</h1>
+<h4 class="pull-right">{{ site.posts.first.date | date: "%B %d, %Y" }}</h4>
 
-<h2>
-  <a href="{{ site.posts.first.url }}">
-    {{ site.posts.first.title }}
-  </a>
-</h2>
-
-<h4>{{ site.posts.first.date | date: "%B %d, %Y" }}</h4>
+<h2>{{ site.posts.first.title }}</h2>
 
 {{ site.posts.first.content }}
 
