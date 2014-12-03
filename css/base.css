@@ -1,0 +1,59 @@
+body {
+	font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #505050;
+	line-height: 22px;
+}
+
+p {
+	margin-top: 25px;
+}
+
+.welcome-mat {
+}
+
+.social-btn {
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.fa-close {
+	vertical-align: bottom;
+	text-align: center;
+	margin: -5px;
+}
+
+.navbar {
+	background-image: url("../img/spacebar2.png");
+}
+
+.date {
+	text-align: right;
+}
+
+.sidebar {
+	border-right: 1px solid #A4A4A4;
+}
+
+.sidebar-blurb {
+	text-align: center;
+}
+
+.content {
+	font-size: 125%;
+	margin: 50px;
+}
+
+.profile {
+	margin-top: 20px;
+	margin-bottom: 50px;
+	width: 150px;
+	height: 150px;
+}
+
+.foot {
+	font-style: italic;
+	font-size: 75%;
+	border-top: 1px solid #dededc;
+	padding: 20px 0;
+	text-align: center;
+}

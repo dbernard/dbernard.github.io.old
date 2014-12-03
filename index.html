@@ -1,0 +1,22 @@
+---
+id: home
+layout: default
+title: Home - Dylan Bernard
+description:
+    Personal website for Dylan Bernard containing information, projects, contact
+    info, and other posts related to technology, programming, and software
+    engineering.
+---
+
+<h1><i class="fa fa-map-marker"></i> Latest Post</h1>
+
+<h2>
+  <a href="{{ site.posts.first.url }}">
+    {{ site.posts.first.title }}
+  </a>
+</h2>
+
+<h4>{{ site.posts.first.date | date: "%B %d, %Y" }}</h4>
+
+{{ site.posts.first.content }}
+

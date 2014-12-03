@@ -1,0 +1,15 @@
+facebook:
+    name: Facebook
+    site: "https://www.facebook.com/dylan.bernard1"
+
+twitter:
+    name: Twitter
+    site: "https://twitter.com/dtbernard"
+
+linkedin:
+    name: LinkedIn
+    site: "https://linkedin.com/pub/dylan-bernard"
+
+github:
+    name: GitHub
+    site: "https://github.com/dbernard"
