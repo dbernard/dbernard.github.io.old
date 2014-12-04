@@ -13,6 +13,12 @@ p {
 	margin-bottom: 40px;
 }
 
+.contact-icons {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
 .desc {
 	font-style: italic;
 	margin-left: 50px;
@@ -21,12 +27,19 @@ p {
 	margin-bottom: 20px;
 }
 
+.projects {
+	margin: 20px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
 .welcome-mat {
 	margin: 20px;
 	border-bottom: 1px solid #A4A4A4;
 }
 
-.social-btn {
+.my-social-btn {
+	color: GREY;
 	margin-left: 8px;
 	margin-right: 8px;
 }

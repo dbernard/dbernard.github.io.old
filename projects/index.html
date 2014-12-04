@@ -1,0 +1,19 @@
+---
+layout: default
+title: Projects
+description: A summary of Dylan Bernard's projects.
+---
+<h2>Projects</h2>
+
+<div class="projects">
+
+  {% for project in site.data.projects %}
+
+  <h4><a href="{{ project.url }}">{{ project.title }}</a></h4>
+  <div class="desc">
+    <i class="fa fa-terminal"></i> {{ project.description }}
+  </div>
+
+  {% endfor %}
+
+</div>

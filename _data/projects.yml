@@ -1,0 +1,37 @@
+- title: My Personal Homepage
+  url: https://github.com/dbernard/dbernard.home
+  description: You are here! This site was built using Jekyll and is hosted with
+               Github pages.
+
+- title: Tweet Mining
+  url: https://github.com/dbernard/TweetMining
+  description: Mining for Tweets with various parsing and graphing capabilities.
+               This project is written in Python and the Tweepy Streaming API.
+
+- title: UpdateRepos.sh
+  url: https://github.com/dbernard/UpdateRepos
+  description: A very simple Shell script for updating commonly used
+               repositories with a single command (so simple, the only reason
+               I'm linking it here is because others might find it useful!)
+
+- title: Exercism Python Contributor
+  url: https://github.com/exercism/xpython
+  description: Contributed to issues and code for the
+      <a href="http://exercism.io">Exercism</a> Python track.
+
+- title: HDLC/Virtualserial
+  url: https://github.com/dbernard/hdlc
+  description: A custom virtual serial connection handler using elements of the
+               HDLC framework.
+
+- title: Data Structures
+  url: https://github.com/dbernard/DataStructures
+  description: Solutions/implementations of various Data Structures and
+               Algorithms problems, with examples of recursion, dynamic
+               programming, Big-O analysis, and more. Pretty much an algorithms
+               sandbox.
+
+- title: LEDPixels
+  url: https://github.com/dbernard/LEDpixels
+  description: Some helpful code for controlling a strip of LED lights through
+               a RaspberryPi.
