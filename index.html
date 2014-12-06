@@ -9,9 +9,8 @@ description:
 ---
 <div class="welcome-mat">
   <h4 class="text-muted"><i class="fa fa-map-marker"></i> Latest Post</h4>
+  <h4 class="pull-right">{{ site.posts.first.date | date: "%B %d, %Y" }}</h4>
 </div>
-
-<h4 class="pull-right">{{ site.posts.first.date | date: "%B %d, %Y" }}</h4>
 
 <div class="post-content">
   {{ site.posts.first.content }}
