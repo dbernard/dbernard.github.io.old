@@ -1,4 +1,5 @@
 body {
+
 	font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #505050;
 	line-height: 22px;
@@ -6,6 +7,11 @@ body {
 
 p {
 	margin-top: 25px;
+}
+
+.container {
+	width: 1150px;
+	max-width: none !important;
 }
 
 .about {
@@ -47,8 +53,8 @@ p {
 
 .my-social-btn {
 	color: GREY;
-	margin-left: 8px;
-	margin-right: 8px;
+	margin-left: 4px;
+	margin-right: 4px;
 }
 
 .fa-close {
