@@ -1,10 +1,12 @@
 # Site settings
 title: Dylan Bernard
+name: Dylan Bernard's Personal Site
 email: dtbernard11@gmail.com
 description:
     The personal website of Dylan Bernard - blog posts about Computer Science
     and Software Engineering
-url: "http://dylanbernard.com"
+url: "https://dylanbernard.com"
 
 # Build settings
+pygments: true
 markdown: kramdown
