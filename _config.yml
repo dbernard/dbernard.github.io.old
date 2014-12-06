@@ -1,12 +1,10 @@
 # Site settings
 title: Dylan Bernard
 email: dtbernard11@gmail.com
-description: >
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: ""
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+description:
+    The personal website of Dylan Bernard - blog posts about Computer Science
+    and Software Engineering
+url: "http://dylanbernard.com"
 
 # Build settings
 markdown: kramdown
