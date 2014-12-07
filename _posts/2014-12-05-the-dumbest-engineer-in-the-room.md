@@ -16,7 +16,7 @@ I have a slightly different interpretation.
 
 As a Software Engineer I don't necessarily aim to **be** the dumbest person in
 the room (although I'd never shy away from that opportunity!) Instead, in a room
-full of engineers, I choose **believe** I am "the dumbest engineer in the
+full of engineers, I choose to **believe** I am "the dumbest engineer in the
 room." Sounds a little self-deprecating, doesn't it? Well, let me explain.
 
 ### It's Really Hard to be an Expert
