@@ -6,6 +6,7 @@ body {
 }
 
 p {
+	line-height: 150%;
 	margin-top: 25px;
 }
 
