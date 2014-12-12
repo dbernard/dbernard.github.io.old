@@ -6,7 +6,8 @@
 - title: Tweet Mining
   url: https://github.com/dbernard/TweetMining
   description: Mining for Tweets with various parsing and graphing capabilities.
-               This project is written in Python and the Tweepy Streaming API.
+               This project is written in Python and the Tweepy Streaming API
+               and utilizes Plotly for it's graphing capabilities.
 
 - title: UpdateRepos.sh
   url: https://github.com/dbernard/UpdateRepos
