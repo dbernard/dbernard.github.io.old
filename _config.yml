@@ -9,4 +9,5 @@ description:
 #url: "https://dylanbernard.com"
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
+highlighter: pygments
