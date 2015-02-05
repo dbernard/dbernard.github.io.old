@@ -27,7 +27,7 @@ and/or computational power to handle the entire firehose.
 
 What I **didn't** anticipate was that there appears to be a limit to the number
 of tweets Twitter will send you, which hovers somewhere around 200 tweets per
-second. I haven't been able to confirm this yet, bit below is a Timeline graph of
+second. I haven't been able to confirm this yet, but below is a Timeline graph of
 the entire data set I collected as tweets per 30 seconds. You'll see where the
 graph appears to plateau at 6000 tweets per 30 seconds (or 200 per second):
 
