@@ -53,6 +53,10 @@ layout: default
       if (msgTxt.value.length > 140 && usr.twitter.username !== 'dtbernard') {
         alert("Please limit your messages to a maximum of 140 characters! (Your message was " + msgTxt.value.length + ")");
       }
+      // Don't allow empty messages
+      else if (msgTxt.value.length < 2) {
+        alert("You must enter at least two characters to write on the whiteboard.");
+      }
       // Deny any profanities
       else if ($.has_profanity(msgTxt.value)) {
         alert("Woah, watch your language please!");
