@@ -3,6 +3,12 @@
   description: You are here! This site was built using Jekyll and is hosted with
                Github pages.
 
+- title: My "Whiteboard"
+  url: /whiteboard/
+  description: A little addition to this website - a message board/"chat"-like
+               service using <a href="https://www.firebase.com/">Firebase</a>.
+               Stop by and leave me a message!
+
 - title: Pyckaxe
   url: https://github.com/dbernard/Pyckaxe
   description: A tool for mining Twitter data from the Twitter public stream with
