@@ -119,7 +119,7 @@ something Python can understand.
 We can go ahead and create a new method in our ```VirtualMachine``` class called
 ```load_image()``` to handle this:
 
-```
+```python
 # Add the following import to the top of your file
 import struct
 
@@ -143,6 +143,160 @@ class VirtualMachine(object):
         # Load the unpacked data into memory, starting at the address provided
         # as an argument to the method (in the default case, address 0)
         self.mem[address:address + len(image)] = array('H', image)
+```
+
+Ok, so now we have our binary loaded into memory, but its worthless if we can't
+execute it! Our next step will be to write some methods to execute and the
+binary by stepping through memory.
+
+### Executing The Binary
+
+Now that the binary contents are loaded into memory and ready to run, we need to
+be able to execute the code. We can start with two new methods, ```execute()```
+and ```step()```:
+
+```python
+# Nothing outside of the VirtualMachine class changes
+...
+
+class VirtualMachine(object):
+    # No changes to existing code
+    ...
+
+    def execute(self):
+        try:
+            # Do this until halted
+            while True:
+                # Step through instructions in memory.
+                # We'll write this method next.
+                self.step()
+        except (VmHalted, KeyboardInterrupt):
+            # On a halt, spit out some info about where we left off.
+            print 'HALTED: Stopped at address %d (%04X)' % (self.pc, self.pc)
+
+    def step(self):
+        # Fetch the op code, args, and program counter from the next instruction.
+        # We'll write fetch_instruction later.
+        op, args, pc = self.fetch_instruction()
+        # Execute the op code we just pulled out of the instruction.
+        # TODO: Uh... now what?
+```
+
+Ok, we pulled the relevant instruction info, but how do we actually execute an
+op code? We need to be able to pair functions with an op code string that we
+pulled from memory. We'll come back to the ```step()``` function we started
+above, but first let's set up a data structure that will define all of our op
+codes.
+
+### Defining The Op Codes
+
+The specifications we received along with our binary from the Synacor Challenge
+define all of the opcodes we need:
+
+```
+== opcode listing ==
+halt: 0
+  stop execution and terminate the program
+set: 1 a b
+  set register <a> to the value of <b>
+push: 2 a
+  push <a> onto the stack
+pop: 3 a
+  remove the top element from the stack and write it into <a>; empty stack = error
+eq: 4 a b c
+  set <a> to 1 if <b> is equal to <c>; set it to 0 otherwise
+gt: 5 a b c
+  set <a> to 1 if <b> is greater than <c>; set it to 0 otherwise
+jmp: 6 a
+  jump to <a>
+jt: 7 a b
+  if <a> is nonzero, jump to <b>
+jf: 8 a b
+  if <a> is zero, jump to <b>
+add: 9 a b c
+  assign into <a> the sum of <b> and <c> (modulo 32768)
+mult: 10 a b c
+  store into <a> the product of <b> and <c> (modulo 32768)
+mod: 11 a b c
+  store into <a> the remainder of <b> divided by <c>
+and: 12 a b c
+  stores into <a> the bitwise and of <b> and <c>
+or: 13 a b c
+  stores into <a> the bitwise or of <b> and <c>
+not: 14 a b
+  stores 15-bit bitwise inverse of <b> in <a>
+rmem: 15 a b
+  read memory at address <b> and write it to <a>
+wmem: 16 a b
+  write the value from <b> into memory at address <a>
+call: 17 a
+  write the address of the next instruction to the stack and jump to <a>
+ret: 18
+  remove the top element from the stack and jump to it; empty stack = halt
+out: 19 a
+  write the character represented by ascii code <a> to the terminal
+in: 20 a
+  read a character from the terminal and write its ascii code to <a>; it can be assumed that once input starts, it will continue until a newline is encountered; this means that you can safely read whole lines from the keyboard and trust that they will be fully read
+noop: 21
+  no operation
+```
+
+Now we just need to define these op codes in our VM code. We'll need to be able
+to map op code strings pulled from our memory as well as the appropriate number
+of arguments with a ```VirtualMachine``` class method that performs that opcode
+instruction.
+
+First, lets build a data structure that maps the operation code number (i.e. 0
+is halt, 1 is set, 2 is push, etc.) to the op code name and argument count:
+
+```python
+# None of this code changes
+...
+
+# Put this section of code above the VirtualMachine class.
+# Each opcode ID pairs with a tuple containing its name and the number of
+# arguments it takes. We will use the name to pair op code IDs to methods.
+opcodes = {
+    0: ('halt', 0),
+    1: ('set', 2),
+    2: ('push', 1),
+    3: ('pop', 1),
+    4: ('eq', 3),
+    5: ('gt', 3),
+    6: ('jmp', 1),
+    7: ('jt', 2),
+    8: ('jf', 2),
+    9: ('add', 3),
+    10: ('mult', 3),
+    11: ('mod', 3),
+    12: ('and', 3),
+    13: ('or', 3),
+    14: ('not', 2),
+    15: ('rmem', 2),
+    16: ('wmem', 2),
+    17: ('call', 1),
+    18: ('ret', 0),
+    19: ('out', 1),
+    20: ('in', 1),
+    21: ('noop', 0)
+}
+
+
+class VirtualMachine(object):
+    # None of this code changes
+    ...
+
+```
+
+As you can see, each opcode ID pairs with a tuple containing its name and the
+number of arguments it takes. We will use the name to pair op code IDs to
+methods.
+
+Since our plan is to pair these names with functions, let's set that up now too.
+To do this, lets first define a couple methods (leaving them empty for now) for
+our op codes.
+
+```python
 ```
 
 ### The Code
