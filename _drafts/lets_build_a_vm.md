@@ -191,7 +191,7 @@ codes.
 ### Defining The Op Codes
 
 The specifications we received along with our binary from the Synacor Challenge
-define all of the opcodes we need:
+define all of the op codes we need:
 
 ```
 == opcode listing ==
@@ -243,7 +243,7 @@ noop: 21
 
 Now we just need to define these op codes in our VM code. We'll need to be able
 to map op code strings pulled from our memory as well as the appropriate number
-of arguments with a ```VirtualMachine``` class method that performs that opcode
+of arguments with a ```VirtualMachine``` class method that performs that op code
 instruction.
 
 First, lets build a data structure that maps the operation code number (i.e. 0
@@ -254,7 +254,7 @@ is halt, 1 is set, 2 is push, etc.) to the op code name and argument count:
 ...
 
 # Put this section of code above the VirtualMachine class.
-# Each opcode ID pairs with a tuple containing its name and the number of
+# Each op code ID pairs with a tuple containing its name and the number of
 # arguments it takes. We will use the name to pair op code IDs to methods.
 opcodes = {
     0: ('halt', 0),
@@ -288,7 +288,7 @@ class VirtualMachine(object):
 
 ```
 
-As you can see, each opcode ID pairs with a tuple containing its name and the
+As you can see, each op code ID pairs with a tuple containing its name and the
 number of arguments it takes. We will use the name to pair op code IDs to
 methods.
 
@@ -296,8 +296,76 @@ Since our plan is to pair these names with functions, let's set that up now too.
 To do this, lets first define a couple methods (leaving them empty for now) for
 our op codes.
 
+One of the hints that the Synacor Challenge architecture specification gives us
+is to start with op codes 0, 19, and 21, or ```halt```, ```out``` and ```noop```.
+
 ```python
+# None of the existing code needs to change
+...
+
+class VirtualMachine(object):
+    # Add these new methods at the bottom of the class
+    ...
+
+    def op_halt(self):
+        '''
+        Halt operation
+        '''
+        pass
+
+    def op_out(self, a):
+        '''
+        Write character represented by ascii code <a> to terminal
+        '''
+        pass
+
+    def op_noop(self):
+        '''
+        Do... nothing!
+        '''
+        pass
+
 ```
+
+So as you can see, our op codes are going to map to functions in the form,
+```op_(NAME)```. Let's go back to our ```step()``` function and work out how we
+will execute op code methods pulled out of instructions.
+
+```python
+...
+
+class VirualMachine(object):
+    # Just update the step() method
+    ...
+
+    def step(self):
+        # Fetch the op code, args, and program counter from the next instruction.
+        # We'll write fetch_instruction later.
+        op, args, pc = self.fetch_instruction()
+
+        # NEW: Execute the op code we just pulled out of the instruction.
+        # Get reference to the method matching the op code for this instruction
+        fn = getattr(self, 'op_' + opcodes[op][0])
+
+        # Execute the function with the arguments for this instruction
+        fn(*args)
+```
+
+So, let's say we fetch an instructions, and the ```op``` variable is ```21```.
+In the specifications and our op codes data structure, op code 21 is ```noop```.
+The line ```fn = getattr(self, 'op_' + opcodes[op][0])``` would translate to:
+
+```python
+fn = getattr(self, 'op_noop')
+```
+
+This sets variable ```fn``` to a call to the method ```op_noop()``` that we just
+created, which is executed in the last line, ```fn(*args)``` which is equivalent
+to ```op_noop(*args)``` when ```fn``` is set.
+
+Next step, actually fetching instructions!
+
+### Fetching Instructions
 
 ### The Code
 
