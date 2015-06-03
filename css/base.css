@@ -17,6 +17,14 @@ textarea {
 	padding: 25px;
 }
 
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5 {
+	color: #FF5050;
+}
+
 #whiteboard {
 	word-wrap: break-word;
 	margin-top: 0px;
