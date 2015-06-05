@@ -622,7 +622,7 @@ right. I'll add the full code at the bottom of this post as well.
 ### What's Next?
 
 Writing and understanding a Virtual Machine can be overwhelming, but once you
-understand the core concepts of simulating, memory it's really not too complex
+understand the core concepts of simulating memory it's really not too complex
 (and **very** interesting).
 
 If you've been coding along, go ahead and try to write the rest of the op code
